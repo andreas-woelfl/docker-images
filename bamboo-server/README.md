@@ -16,7 +16,7 @@ docker run -d hwuethrich/bamboo-server
 By default, the ports `8085` (admin interface) and `54663` (agent server) are mapped to random ports on the docker host. To customize, run:
 
 ```
-docker run -p 8085:8085 -p 54663:54663 hwuethrich/bamboo-server
+docker run -p 8085:8085 -p 54663:54663 woelfl/bamboo-server
 ```
 
 If you want to use Bamboo remote agents, make sure to set the public port (and hostname) in the Bamboo settings (or directly in `/home/bamboo/bamboo.cfg.xml`).
@@ -33,7 +33,7 @@ with the same Bamboo database and license or if you want to backup this director
 host. It also allows you to upgrade your Bamboo server without losing your data:
 
 ```
-docker run -v /data/bamboo-server:/home/bamboo -d hwuethrich/bamboo-server
+docker run -v /data/bamboo-server:/home/bamboo -d woelfl/bamboo-server
 ```
 
 ### Running a different Bamboo version
@@ -41,7 +41,7 @@ docker run -v /data/bamboo-server:/home/bamboo -d hwuethrich/bamboo-server
 By default, the container downloads and installs Bamboo v5.4 on the first boot. To specify which version to install, set the environment variable `BAMBOO_VERSION`:
 
 ```
-docker run -e BAMBOO_VERSION=5.2 -d hwuethrich/bamboo-server
+docker run -e BAMBOO_VERSION=5.2 -d woelfl/bamboo-server
 ```
 
 Version 5.1.0 and later should work.
@@ -54,7 +54,7 @@ The following example shows the options I use for our CI environment:
 docker run --name=bamboo-server \
   -e TZ=Europe/Zurich -e JAVA_OPTS=-Xmx1024m -e BAMBOO_VERSION=5.2 \
   -v /opt/bamboo-server:/home/bamboo -p 8085:8085 -p 54663:54663 \
-  -d hwuethrich/bamboo-server
+  -d woelfl/bamboo-server
 ```
 
 ### Debugging
@@ -63,7 +63,7 @@ By default, the container runs Bamboo with `supervisord` in the background. If y
 and see the log output, run:
 
 ```
-docker run -t -i hwuethrich/bamboo-server /start/bamboo-server
+docker run -t -i woelfl/bamboo-server /start/bamboo-server
 ```
 
 ## Directories
