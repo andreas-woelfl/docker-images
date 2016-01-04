@@ -26,7 +26,7 @@ ADD bamboo-server.sh /etc/service/bamboo-server/run
 RUN apt-get update && apt-get upgrade -y
 
 # Install Java8
-RUN apt-get install -yq python-software-properties && add-apt-repository ppa:webupd8team/java -y
+RUN apt-get install -yq python-software-properties && add-apt-repository ppa:webupd8team/java -y && apt-get update
 RUN echo oracle-java8-installer shared/accepted-oracle-license-v1-1 select true | /usr/bin/debconf-set-selections
 RUN apt-get install -yq oracle-java8-installer
 
