@@ -41,9 +41,5 @@ RUN curl -fsSL https://archive.apache.org/dist/maven/maven-3/$MAVEN_VERSION/bina
 ENV MAVEN_HOME /usr/share/maven
 VOLUME /root/.m2
 
-# Link Docker from host
-VOLUME ["/var/run/docker.sock"]
-VOLUME ["/usr/bin/docker"]
-
 # Clean up APT when done.
 RUN apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
